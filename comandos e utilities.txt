@@ -1,0 +1,23 @@
+django-admin startprojecr --nome
+ py manage.py startapp --nome
+py manage.py makemigrations
+py manage.py mitgrate
+py manage.py createsuperuser
+py manage.py shell
+py manage.py runserver
+
+
+
+Database
+
+*Ordenando
+Posts.objects.all().orderBy(date)
+*desc
+Posts.objects.all().orderBy(-date)
+
+
+
+
+
+seed
+install faker

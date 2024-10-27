@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>
+      {% block title %}
+
+      {% endblock %}
+    </title>
+  </head>
+  <body>
+    <ul>
+      <li>
+        <a href="{% url 'post:sobre' %}">Sobre</a>
+      </li>
+      <li>
+        <a href="{% url 'post:posts' %}">Posts</a>
+      </li>
+
+      {% if user.is_authenticated %}
+        <li>
+          <a href="{% url 'post:new_post' %}">New Post</a>
+        </li>
+        <li>
+          <form action="{% url 'users:logout' %}" method="post" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+          </form>
+        </li>
+      {% else %}
+        <li>
+          <a href="{% url 'users:register' %}">Register</a>
+        </li>
+        <li>
+          <a href="{% url 'users:login' %}">Login</a>
+        </li>
+      {% endif %}
+    </ul>
+
+    <main>
+      {% block content %}
+
+      {% endblock %}
+    </main>
+  </body>
+</html>

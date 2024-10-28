@@ -16,9 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-
+from . import views
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),
-
+    path('users/', views.user_list_or_create),
+    path('users/<int:user_id>', views.user_list_or_create, name='delete-user'),  # DELETE
 ]
